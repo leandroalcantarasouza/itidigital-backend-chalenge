@@ -1,0 +1,76 @@
+= Documentação API ITI Digital Validacação Credenciais
+:doctype: book
+:icons: font
+:source-hihglighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[visao-geral]]
+= Visão Geral
+
+[[visao-geral-verbos-http]]
+== Verbos HTTP
+
+A validação da senha se utiliza do verbo POST para não expor a senha do usuário pela rede.
+
+[[visao-geral-codigos-http]]
+== Códigos HTTP utilizados
+
+A validação de senha se utiliza principalmente dos códigos 200 e 412 para indicar sucesso ou falha da requisição
+
+Em ambos os casos, será retornado um objeto contendo um campo boolean indicando o sucesso ou falha da requisição
+Segue um exemplo:
+
+include::{snippets}/validacao-senha-sucesso/http-response.adoc[]
+
+|===
+| Código HTTP | Uso
+
+| `200 OK`
+| Senha válida
+
+| `412 Precondition Failed`
+| A senha enviada não passa em todos os critérios de validação
+|===
+
+[[parametro-request]]
+
+=== Parâmetros de entrada
+
+Para validar a senha será enviado um objeto do tipo `JSON` contendo seguinte descrição
+
+include::{snippets}/validacao-senha-sucesso/request-fields.adoc[]
+
+Um exemplo de uso é exibido a seguir
+
+include::{snippets}/validacao-senha-sucesso/curl-request.adoc[]
+
+[[parametro-response]]
+=== Parâmetro de saída
+
+Como dito anteriormente a saída retornará um objeto com um campo nomeado `resultadoValidacao` contendo o retorno da validação da senha em formato booleano.
+Além disso, um retorno 200 em caso de sucesso e 412 em caso de erro será retornado junto do campo.
+
+Seguem exemplos:
+
+==== Chamada com sucesso
+
+include::{snippets}/validacao-senha-sucesso/request-fields.adoc[]
+
+include::{snippets}/validacao-senha-sucesso/curl-request.adoc[]
+
+include::{snippets}/validacao-senha-sucesso/response-fields.adoc[]
+
+include::{snippets}/validacao-senha-sucesso/http-response.adoc[]
+
+==== Chamada com erro
+
+include::{snippets}/validacao-senha-erro/request-fields.adoc[]
+
+include::{snippets}/validacao-senha-erro/curl-request.adoc[]
+
+include::{snippets}/validacao-senha-erro/response-fields.adoc[]
+
+include::{snippets}/validacao-senha-erro/http-response.adoc[]
+
