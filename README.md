@@ -71,7 +71,7 @@ A seguir são apresentadas alguns *códigos http* utilizados na api e a explica�
 
 ## Chamada da API
 
-O endpoint de validação de credenciais pode ser chamado através do endereço `http://localhost:8080/api/api/v1/credenciais/validacao`, com o método http `POST`.
+O endpoint de validação de credenciais pode ser chamado através do endereço `http://localhost:8080/api/v1/credenciais/validacao`, com o método http `POST`.
 É necessário enviar um payload, contendo os campo senha.
 
 Um exemplo do payload é exibido a a seguir:
@@ -111,7 +111,7 @@ Porém, caso a senha não preenche todos os pré-requisitos será retornado o c�
 
 Requisição com erro
 ```
-curl 'http://localhost:35653/api/v1/credenciais/validacao' -i -X POST \
+curl 'http://localhost:8080/api/v1/credenciais/validacao' -i -X POST \
     -H 'Content-Type: application/json' \
     -d '{"senha":"AbTp9!fok "}'
 ```
